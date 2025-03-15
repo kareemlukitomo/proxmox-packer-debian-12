@@ -1,0 +1,5 @@
+creation_rules:
+  - path_regex: .*\.secret.pkrvars\.hcl$
+    key_groups:
+    - pgp:
+      - 32BF2A90EF727CE320C1C6EFBB3631D3126B2788
