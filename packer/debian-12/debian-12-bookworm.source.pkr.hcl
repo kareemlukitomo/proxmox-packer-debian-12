@@ -7,7 +7,7 @@ source "proxmox-iso" "debian-12" {
 
   vm_name                 = "pckr-tmpl-debian-12"
   template_description    = "Debian 12 Bookworm Packer Template -- Created: ${formatdate("YYYY-MM-DD hh:mm:ss ZZZ", timestamp())}"
-  vm_id                   = var.vmid
+  # vm_id                   = var.vmid # Optional, can default to next available VM ID
   os                      = "l26"
   cpu_type                = var.cpu_type
   sockets                 = "1"
@@ -43,8 +43,7 @@ source "proxmox-iso" "debian-12" {
   http_port_max  = 8100
   http_interface = "vmbr0"
   boot_wait      = "3s"
-  boot_command = [
-  "<esc><wait>auto DEBCONF_DEBUG=5 url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"]
+  boot_command = ["<esc><wait>auto DEBCONF_DEBUG=5 url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"]
 
   ssh_username = "root"
   ssh_password = "packer"
